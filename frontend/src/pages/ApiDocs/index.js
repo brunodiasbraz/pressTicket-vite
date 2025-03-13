@@ -28,13 +28,13 @@ const ApiDocs = () => {
 	const classes = useStyles();
 
 	useEffect(() => {
-		const socket = openSocket(import.meta.env.REACT_APP_BACKEND_URL);
+		const socket = openSocket(import.meta.env.VITE_BACKEND_URL);
 		return () => {
 			socket.disconnect();
 		};
 	}, []);
 
-    const back = import.meta.env.REACT_APP_BACKEND_URL;
+    const back = import.meta.env.VITE_BACKEND_URL;
     const endapi = "/api-docs";
     const urlapi = back.concat(endapi);
 

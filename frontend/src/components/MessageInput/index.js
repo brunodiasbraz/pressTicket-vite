@@ -33,7 +33,8 @@ import {
 import clsx from "clsx";
 import { Picker } from "emoji-mart";
 import "emoji-mart/css/emoji-mart.css";
-import MicRecorder from "mic-recorder-to-mp3";
+// import MicRecorder from "mic-recorder-to-mp3";
+// import {Lame, MicRecorder} from "lamejs"
 import PropTypes from "prop-types";
 import React, {
   useContext,
@@ -51,7 +52,7 @@ import api from "../../services/api";
 import { i18n } from "../../translate/i18n";
 import RecordingTimer from "./RecordingTimer";
 
-const Mp3Recorder = new MicRecorder({ bitRate: 128 });
+// const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
 const useStyles = makeStyles((theme) => ({
   mainWrapper: {
@@ -389,7 +390,7 @@ const MessageInput = ({ ticketStatus }) => {
     setLoading(true);
     try {
       await navigator.mediaDevices.getUserMedia({ audio: true });
-      await Mp3Recorder.start();
+      // await Mp3Recorder.start();
       setRecording(true);
       setLoading(false);
     } catch (err) {
@@ -421,12 +422,12 @@ const MessageInput = ({ ticketStatus }) => {
   const handleUploadAudio = async () => {
     setLoading(true);
     try {
-      const [, blob] = await Mp3Recorder.stop().getMp3();
-      if (blob.size < 10000) {
-        setLoading(false);
-        setRecording(false);
-        return;
-      }
+      // const [, blob] = await Mp3Recorder.stop().getMp3();
+      // if (blob.size < 10000) {
+      //   setLoading(false);
+      //   setRecording(false);
+      //   return;
+      // }
 
       const formData = new FormData();
       const filename = `${new Date().getTime()}.mp3`;
@@ -448,7 +449,7 @@ const MessageInput = ({ ticketStatus }) => {
 
   const handleCancelAudio = async () => {
     try {
-      await Mp3Recorder.stop().getMp3();
+      // await Mp3Recorder.stop().getMp3();
       setRecording(false);
     } catch (err) {
       toastError(err);
