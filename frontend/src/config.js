@@ -4,7 +4,7 @@ function getConfig(name, defaultValue=null) {
         return window.ENV[name] || defaultValue;
     }
 
-    return process.env[name] || defaultValue;
+    return import.meta.env[name] || defaultValue;
 }
 
 export function getBackendUrl() {

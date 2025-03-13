@@ -50,7 +50,7 @@ export const SendMediaMessageService = async (
 
   message = message.replace(/\n/g, " ");
 
-  const backendUrl = process.env.WEBHOOK;
+  const backendUrl = import.meta.env.WEBHOOK;
 
   const filename = encodeURIComponent(media.filename);
   mediaUrl = `${backendUrl}/public/${filename}`;
