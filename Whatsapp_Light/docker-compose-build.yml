@@ -1,0 +1,61 @@
+networks:
+  whatsapplight:
+    driver: bridge
+
+services:
+  backend:
+    networks:
+      - whatsapplight
+    image: lucasleite946/whatsapp-light-backend:latest
+    volumes:
+       - public:/opt/backend/public
+       - wwebjs_auth:/opt/backend/dist/.wwebjs_auth
+       - wwebjs_cache:/opt/backend/dist/.wwebjs_cache
+    build:
+      context: ./backend/
+    ports:
+      - "8050:8050"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - mysql
+    restart: unless-stopped
+
+  frontend:
+    networks:
+      - whatsapplight
+    image: lucasleite946/whatsapp-light-frontend:latest
+    build:
+      context: ./frontend/
+    ports:
+      - "3050:3050"
+    env_file:
+      - ./frontend/.env
+    command: /bin/sh -c "serve -s build -l 3050"
+    environment:
+      - CI=false
+    restart: unless-stopped
+
+  # https://dev.mysql.com/doc/refman/8.0/en/docker-mysql-more-topics.html#docker-environment-variables
+  mysql:
+    networks:
+      - whatsapplight
+    image: mysql/mysql-server:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: Ssv159@@@
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: ssvlight
+      MYSQL_USER: ssv
+      MYSQL_PASSWORD: Ssv159@@
+    ports:
+      - "3310:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./basePadraoSSV.sql:/docker-entrypoint-initdb.d/basePadraoSSV.sql
+    restart: unless-stopped
+
+volumes:
+  public:
+  wwebjs_auth:
+  wwebjs_cache:
+  mysql_data:
