@@ -13,7 +13,7 @@ export const setChannelWebhook = async (
 
   const client = new Client(notificameHubToken);
 
-  const url = `${import.meta.env.WEBHOOK}/hub-webhook/${whatsapp.qrcode}`;
+  const url = `${process.env.WEBHOOK}/hub-webhook/${whatsapp.qrcode}`;
 
   const subscription = new MessageSubscription(
     {

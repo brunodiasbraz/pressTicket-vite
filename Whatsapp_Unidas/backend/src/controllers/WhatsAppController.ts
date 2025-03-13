@@ -14,7 +14,7 @@ import ListSettingsService from "../services/SettingServices/ListSettingsService
 
 import dotenv from "dotenv";
 dotenv.config();
-const apiUrl = `${import.meta.env.BACKEND_URL}:${import.meta.env.PORT}/api/messages/send`;
+const apiUrl = `${process.env.BACKEND_URL}:${process.env.PORT}/api/messages/send`;
 
 interface WhatsappData {
   name: string;
@@ -35,7 +35,7 @@ export const index = async (req: Request, res: Response): Promise<Response> => {
 export const store = async (req: Request, res: Response): Promise<Response> => {
   const WhatsApps = await ListWhatsAppsService();
 
-  if (WhatsApps.length >= Number(import.meta.env.CONNECTIONS_LIMIT)) {
+  if (WhatsApps.length >= Number(process.env.CONNECTIONS_LIMIT)) {
     throw new AppError("ERR_CONNECTION_CREATION_COUNT", 403);
   }
 

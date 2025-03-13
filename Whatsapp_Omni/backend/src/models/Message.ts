@@ -39,7 +39,7 @@ class Message extends Model<Message> {
   @Column(DataType.STRING)
   get mediaUrl(): string | null {
     if (this.getDataValue("mediaUrl")) {
-      return `${import.meta.env.BACKEND_URL}:${import.meta.env.PROXY_PORT
+      return `${process.env.BACKEND_URL}:${process.env.PROXY_PORT
         }/public/${this.getDataValue("mediaUrl")}`;
     }
     return null;

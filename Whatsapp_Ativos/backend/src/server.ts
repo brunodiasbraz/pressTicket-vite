@@ -13,8 +13,8 @@ var options = {
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs, options));
 
-const server = app.listen(import.meta.env.PORT, () => {
-  logger.info(`Servidor iniciado na porta: ${import.meta.env.PORT}`);
+const server = app.listen(process.env.PORT, () => {
+  logger.info(`Servidor iniciado na porta: ${process.env.PORT}`);
 });
 
 initIO(server);
