@@ -4,7 +4,7 @@
   "systemVersion": "v1.9.0",
   "private": true,
   "scripts": {
-    "start": "vite",
+    "start": "vite --port 3333 --strictPort",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "react-scripts test",

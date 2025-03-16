@@ -2,9 +2,9 @@ import React, { createContext } from "react";
 
 import useWhatsApps from "../../hooks/useWhatsApps";
 
-const WhatsAppsContext = createContext();
+export const WhatsAppsContext = createContext();
 
-const WhatsAppsProvider = ({ children }) => {
+export const WhatsAppsProvider = ({ children }) => {
 	const { loading, whatsApps } = useWhatsApps();
 
 	return (
@@ -14,4 +14,4 @@ const WhatsAppsProvider = ({ children }) => {
 	);
 };
 
-export { WhatsAppsContext, WhatsAppsProvider };
+// export { WhatsAppsContext, WhatsAppsProvider };

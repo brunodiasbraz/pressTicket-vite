@@ -83,7 +83,7 @@ export default function NewCampaignModal({ open, onClose }) {
   const [selectedFileId, setSelectedFileId] = useState(null);
   const [baseNumbersModalOpen, setBaseNumbersModalOpen] = useState(false);
 
-  const apiKey = process.env.API_KEY_PRESSTICKET;
+  const apiKey = import.meta.env.API_KEY_PRESSTICKET;
 
   const handleClose = () => {
     onClose();

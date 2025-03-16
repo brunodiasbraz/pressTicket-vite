@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
-import Routes from "./routes";
+import Routes from "./routes/index";
 
 import { ptBR } from "@material-ui/core/locale";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";

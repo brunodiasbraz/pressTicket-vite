@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React, { createContext, useState } from "react";
 
-const EditMessageContext = createContext();
+export const EditMessageContext = createContext();
 
-const EditMessageProvider = ({ children }) => {
+export const EditMessageProvider = ({ children }) => {
 	const [editingMessage, setEditingMessage] = useState(null);
 
 	return (
@@ -19,4 +19,4 @@ EditMessageProvider.propTypes = {
 	children: PropTypes.array
 }
 
-export { EditMessageContext, EditMessageProvider };
+// export { EditMessageContext, EditMessageProvider };
