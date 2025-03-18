@@ -25,14 +25,14 @@ const App = ({ wallet, cpf }) => {
     localStorage.setItem("carteira", wallet);
 
     const handleMessageProps = async () => {
-      console.log('WALLET :>> ', wallet);
-      console.log('CPF :>> ', cpf);
-
+      
       if (wallet) {
         const existingWallet = localStorage.getItem("cateira");
         if (!existingWallet) {
           localStorage.setItem("carteira", wallet);
         }
+        console.log('WALLET :>> ', wallet);
+        console.log('CPF :>> ', cpf);
       }
 
       if (cpf) {

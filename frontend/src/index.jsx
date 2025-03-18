@@ -1,12 +1,18 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import App from "./App";
 
-ReactDOM.render(
-	<CssBaseline>
-		<App />
-	</CssBaseline>,
-	document.getElementById("root")
+// ReactDOM.render(
+// 	<CssBaseline>
+// 		<App />
+// 	</CssBaseline>,
+// 	document.getElementById("root")
+// );
+
+createRoot(document.getElementById("root")).render(
+  <CssBaseline>
+    <App />
+  </CssBaseline>
 );
