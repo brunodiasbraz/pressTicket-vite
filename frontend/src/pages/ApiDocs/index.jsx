@@ -29,7 +29,6 @@ const ApiDocs = () => {
 
 	useEffect(() => {
 		const socket = openSocket(import.meta.env.VITE_BACKEND_URL);
-		const socket = openSocket(import.meta.env.VITE_BACKEND_URL);
 		return () => {
 			socket.disconnect();
 		};

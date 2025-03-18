@@ -18,11 +18,43 @@ import { toast } from "react-toastify";
 
 const { system } = config;
 
-const App = ({ wallet = "INTACTO" }) => {
+const App = ({ wallet, cpf }) => {
   // Receber Token quando existir iframe ********************************************************************
   useEffect(() => {
     
     localStorage.setItem("carteira", wallet);
+
+    const handleMessageProps = async () => {
+      console.log('WALLET :>> ', wallet);
+      console.log('CPF :>> ', cpf);
+
+      if (wallet) {
+        const existingWallet = localStorage.getItem("cateira");
+        if (!existingWallet) {
+          localStorage.setItem("carteira", wallet);
+        }
+      }
+
+      if (cpf) {
+        const rota = "/tickets";
+
+        // Cria o objeto userData
+        const userData = {};
+        // Define as propriedades de userData
+        userData.email = `${cpf}@omnichannel.com`;
+        userData.password = cpf;
+
+        const { data } = await api.post("/auth/login", userData);
+
+        const existingToken = localStorage.getItem("token");
+        if (!existingToken) {
+          localStorage.setItem("token", JSON.stringify(data.token));
+          api.defaults.headers.Authorization = `Bearer ${data.token}`;
+          toast.success(i18n.t("auth.toasts.success"));
+          window.location.href = rota;
+        }
+      }
+    };
 
     const handleMessage = async (event) => {
       const data = event.data;
@@ -55,6 +87,7 @@ const App = ({ wallet = "INTACTO" }) => {
       }
     };
 
+    handleMessageProps()
     window.addEventListener("message", handleMessage);
 
     // Limpeza do listener

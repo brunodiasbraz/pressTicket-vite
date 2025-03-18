@@ -5,7 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
 import TicketsManager from "../../components/TicketsManager/";
-import Ticket from "../../components/Ticket/";
+import Ticket from "../../components/Ticket/index.jsx";
 
 import { i18n } from "../../translate/i18n";
 import Hidden from "@material-ui/core/Hidden";
