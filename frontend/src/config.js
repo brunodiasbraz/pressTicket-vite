@@ -8,7 +8,7 @@ function getConfig(name, defaultValue=null) {
 }
 
 export function getBackendUrl() {
-    const wallet = localStorage.getItem('carteira').split(' ')[0]
+    const wallet = localStorage.getItem('carteira')?.split(' ')[0]
     return getConfig(`VITE_BACKEND_URL_${wallet}`);
 }
 

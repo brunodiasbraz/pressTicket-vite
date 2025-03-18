@@ -18,16 +18,14 @@ import { toast } from "react-toastify";
 
 const { system } = config;
 
-const App = () => {
-
+const App = ({ wallet = "INTACTO" }) => {
   // Receber Token quando existir iframe ********************************************************************
   useEffect(() => {
+    
+    localStorage.setItem("carteira", wallet);
+
     const handleMessage = async (event) => {
       const data = event.data;
-
-      console.log(data.wallet);
-      console.log(data.cpf);
-      console.log(data.rota);
 
       if (data.wallet) {
         const existingWallet = localStorage.getItem("cateira");
