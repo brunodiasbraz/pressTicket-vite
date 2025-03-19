@@ -18,7 +18,7 @@ import { toast } from "react-toastify";
 
 const { system } = config;
 
-const App = ({ wallet, cpf }) => {
+const App = ({ wallet='INTACTO', cpf='08518074614' }) => {
   // Receber Token quando existir iframe ********************************************************************
   useEffect(() => {
     
@@ -27,15 +27,11 @@ const App = ({ wallet, cpf }) => {
     const handleMessageProps = async () => {
       
       if (wallet) {
-        const existingWallet = localStorage.getItem("cateira");
+        const existingWallet = localStorage.getItem("carteira");
         if (!existingWallet) {
           localStorage.setItem("carteira", wallet);
         }
-        console.log('WALLET :>> ', wallet);
-        console.log('CPF :>> ', cpf);
       }
-
-      if (cpf) {
         const rota = "/tickets";
 
         // Cria o objeto userData
@@ -50,10 +46,9 @@ const App = ({ wallet, cpf }) => {
         if (!existingToken) {
           localStorage.setItem("token", JSON.stringify(data.token));
           api.defaults.headers.Authorization = `Bearer ${data.token}`;
-          toast.success(i18n.t("auth.toasts.success"));
+          toast.success("Sucesso no login");
           window.location.href = rota;
         }
-      }
     };
 
     const handleMessage = async (event) => {
