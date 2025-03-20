@@ -14,7 +14,7 @@ export default defineConfig(() => {
           './Teste': './src/pages/Teste/index.jsx',
           './App': './src/App.jsx'
         },
-         shared: ['react', 'react-dom']
+         shared: ['react', 'react-dom', 'react-router-dom']
       })
     ],
     build: {
