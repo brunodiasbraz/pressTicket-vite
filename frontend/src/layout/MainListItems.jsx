@@ -31,7 +31,8 @@ import {
   EmojiFlagsRounded,
   ViewArray,
   ExpandLess,
-  ExpandMore
+  ExpandMore,
+  DataUsageOutlined
 } from "@material-ui/icons";
 
 import { i18n } from "../translate/i18n";
@@ -229,6 +230,15 @@ const isActive = (path) => {
               className={clsx(
                 classes.listItem,
                 isActive("/users") && classes.activeItem
+              )}
+            />
+            <ListItemLink
+              to="/teste"
+              primary={i18n.t("mainDrawer.listItems.users")}
+              icon={<DataUsageOutlined />}
+              className={clsx(
+                classes.listItem,
+                isActive("/teste") && classes.activeItem
               )}
             />
             <ListItemLink

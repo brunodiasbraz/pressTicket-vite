@@ -23,6 +23,7 @@ import Users from "../pages/Users";
 import { AuthProvider } from "../context/Auth/AuthContext";
 import { WhatsAppsProvider } from "../context/WhatsApp/WhatsAppsContext";
 import Route from "./Route";
+import Teste from "../pages/Teste";
 
 const Routes = () => {
   return (
@@ -33,6 +34,7 @@ const Routes = () => {
           <Route exact path="/signup" component={Signup} />
           <WhatsAppsProvider>
             <LoggedInLayout>
+              <Route exact path="/teste" component={Teste} isPrivate />
               <Route exact path="/" component={Dashboard} isPrivate />
               <Route exact path="/tickets/:ticketId?" component={Tickets} isPrivate />
               <Route exact path="/campaign" component={Campaign} isPrivate />

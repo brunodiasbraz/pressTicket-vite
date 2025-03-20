@@ -14,13 +14,9 @@ export default defineConfig(() => {
           './Teste': './src/pages/Teste/index.jsx',
           './App': './src/App.jsx'
         },
-         shared: ['react', 'react-dom', 'react-router-dom']
+         shared: ['react', 'react-dom']
       })
     ],
-    base: "/",
-    server: {
-      port: 3002,
-    },
     build: {
       outDir: "build",
       modulePreload: false,
